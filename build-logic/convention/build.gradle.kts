@@ -42,5 +42,10 @@ gradlePlugin {
             id = "lt.vitalijus.convention.android.application.compose"
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
+
+        register("cmpApplication") {
+            id = "lt.vitalijus.convention.cmp.application"
+            implementationClass = "CmpApplicationConventionPlugin"
+        }
     }
 }
