@@ -37,15 +37,17 @@ gradlePlugin {
             id = "lt.vitalijus.convention.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
-
         register("androidComposeApplication") {
             id = "lt.vitalijus.convention.android.application.compose"
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
-
         register("cmpApplication") {
             id = "lt.vitalijus.convention.cmp.application"
             implementationClass = "CmpApplicationConventionPlugin"
+        }
+        register("kmpLibrary") {
+            id = "lt.vitalijus.convention.kmp.library"
+            implementationClass = "KmpLibraryConventionPlugin"
         }
     }
 }
