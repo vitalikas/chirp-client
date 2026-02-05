@@ -142,6 +142,8 @@ compose-gradlePlugin = { group = "org.jetbrains.kotlin", name = "compose-compile
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 androidx-room-gradle-plugin = { module = "androidx.room:room-gradle-plugin", version.ref = "room" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+buildkonfig-gradlePlugin = { group = "com.codingfeline.buildkonfig", name = "buildkonfig-gradle-plugin", version.ref = "buildkonfig" }
+buildkonfig-compiler = { group = "com.codingfeline.buildkonfig", name = "buildkonfig-compiler", version.ref = "buildkonfig" }
 
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
@@ -163,12 +165,16 @@ androidx-runner = { group = "androidx.test", name = "runner", version.ref = "run
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
 
 [plugins]
+# Custom convention plugins
+# Called via apply("plugin-id") in AndroidApplicationComposeConventionPlugin convention plugin
 convention-android-application = { id = "lt.vitalijus.convention.android.application", version = "unspecified" }
+# Called via apply("plugin-id") in CmpApplicationConventionPlugin convention plugin
 convention-android-application-compose = { id = "lt.vitalijus.convention.android.application.compose", version = "unspecified" }
 convention-cmp-application = { id = "lt.vitalijus.convention.cmp.application", version = "unspecified" }
 convention-kmp-library = { id = "lt.vitalijus.convention.kmp.library", version = "unspecified" }
 convention-cmp-library = { id = "lt.vitalijus.convention.cmp.library", version = "unspecified" }
 convention-cmp-feature = { id = "lt.vitalijus.convention.cmp.feature", version = "unspecified" }
+convention-buildkonfig = { id = "lt.vitalijus.convention.buildkonfig", version = "unspecified" }
 
 # Android
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -190,7 +196,6 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "room" }
 google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
 android-lint = { id = "com.android.lint", version.ref = "agp" }
 
 [bundles]
