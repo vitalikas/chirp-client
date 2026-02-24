@@ -1,10 +1,36 @@
 package lt.vitalijus.auth.presentation.register
 
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import chirp.feature.auth.presentation.generated.resources.Res
+import chirp.feature.auth.presentation.generated.resources.email
+import chirp.feature.auth.presentation.generated.resources.email_placeholder
+import chirp.feature.auth.presentation.generated.resources.login
+import chirp.feature.auth.presentation.generated.resources.password
+import chirp.feature.auth.presentation.generated.resources.password_hint
+import chirp.feature.auth.presentation.generated.resources.register
+import chirp.feature.auth.presentation.generated.resources.username
+import chirp.feature.auth.presentation.generated.resources.username_hint
+import chirp.feature.auth.presentation.generated.resources.username_placeholder
+import chirp.feature.auth.presentation.generated.resources.welcome
+import lt.vitalijus.core.designsystem.components.brand.ChirpBrandLogo
+import lt.vitalijus.core.designsystem.components.buttons.ChirpButton
+import lt.vitalijus.core.designsystem.components.buttons.ChirpButtonStyle
+import lt.vitalijus.core.designsystem.components.layouts.ChirpAdaptiveFormLayout
+import lt.vitalijus.core.designsystem.components.layouts.ChirpSnackbarScaffold
+import lt.vitalijus.core.designsystem.components.textfields.ChirpPasswordTextField
+import lt.vitalijus.core.designsystem.components.textfields.ChirpTextField
 import lt.vitalijus.core.designsystem.theme.ChirpTheme
+import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
@@ -13,9 +39,12 @@ fun RegisterRoot(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
+    val snackbarHostState = remember { SnackbarHostState() }
+
     RegisterScreen(
         state = state,
-        onAction = viewModel::onAction
+        onAction = viewModel::onAction,
+        snackbarHostState = snackbarHostState
     )
 }
 
@@ -23,8 +52,87 @@ fun RegisterRoot(
 fun RegisterScreen(
     state: RegisterState,
     onAction: (RegisterAction) -> Unit,
+    snackbarHostState: SnackbarHostState
 ) {
+    ChirpSnackbarScaffold(
+        snackbarHostState = snackbarHostState
+    ) {
+        ChirpAdaptiveFormLayout(
+            headerText = stringResource(Res.string.welcome),
+            errorText = state.registrationError?.asString(),
+            logo = { ChirpBrandLogo() }
+        ) {
+            // username text field
+            ChirpTextField(
+                state = state.usernameTextState,
+                title = stringResource(Res.string.username),
+                placeholder = stringResource(Res.string.username_placeholder),
+                supportingText = state.usernameError?.asString()
+                    ?: stringResource(Res.string.username_hint),
+                isError = state.usernameError != null,
+                onFocusChanged = { isFocused ->
+                    onAction(RegisterAction.OnInputTextFocusGain)
+                }
+            )
 
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // email text field
+            ChirpTextField(
+                state = state.emailTextState,
+                title = stringResource(Res.string.email),
+                placeholder = stringResource(Res.string.email_placeholder),
+                isError = state.emailError != null,
+                onFocusChanged = { isFocused ->
+                    onAction(RegisterAction.OnInputTextFocusGain)
+                }
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // password text field
+            ChirpPasswordTextField(
+                state = state.passwordTextState,
+                title = stringResource(Res.string.password),
+                placeholder = stringResource(Res.string.password),
+                supportingText = state.passwordError?.asString()
+                    ?: stringResource(Res.string.password_hint),
+                isError = state.passwordError != null,
+                onFocusChanged = { isFocused ->
+                    onAction(RegisterAction.OnInputTextFocusGain)
+                },
+                onToggleVisibilityClick = {
+                    onAction(RegisterAction.OnTogglePasswordVisibilityClick)
+                },
+                isPasswordVisible = state.isPasswordVisible
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // register button
+            ChirpButton(
+                text = stringResource(Res.string.register),
+                onClick = {
+                    onAction(RegisterAction.OnRegisterClick)
+                },
+                enabled = state.canRegister,
+                isLoading = state.isRegistering,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            // login button
+            ChirpButton(
+                text = stringResource(Res.string.login),
+                onClick = {
+                    onAction(RegisterAction.OnLoginClick)
+                },
+                style = ChirpButtonStyle.SECONDARY,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+    }
 }
 
 @Preview
@@ -33,7 +141,8 @@ private fun Preview() {
     ChirpTheme {
         RegisterScreen(
             state = RegisterState(),
-            onAction = {}
+            onAction = {},
+            snackbarHostState = remember { SnackbarHostState() }
         )
     }
 }
