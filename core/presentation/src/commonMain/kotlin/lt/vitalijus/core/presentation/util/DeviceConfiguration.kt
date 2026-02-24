@@ -31,9 +31,7 @@ enum class DeviceConfiguration {
                     // HEIGHT_DP_MEDIUM_LOWER_BOUND     480dp
                     // HEIGHT_DP_EXPANDED_LOWER_BOUND   900dp
 
-                    minWidthDp < WIDTH_DP_MEDIUM_LOWER_BOUND &&
-                            minHeightDp in HEIGHT_DP_MEDIUM_LOWER_BOUND until HEIGHT_DP_EXPANDED_LOWER_BOUND ->
-                        MOBILE_PORTRAIT
+                    minWidthDp < WIDTH_DP_MEDIUM_LOWER_BOUND -> MOBILE_PORTRAIT
 
                     minWidthDp >= WIDTH_DP_EXPANDED_LOWER_BOUND &&
                             minHeightDp < HEIGHT_DP_MEDIUM_LOWER_BOUND -> MOBILE_LANDSCAPE
