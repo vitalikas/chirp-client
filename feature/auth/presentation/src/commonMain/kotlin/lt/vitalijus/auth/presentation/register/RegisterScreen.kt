@@ -30,16 +30,26 @@ import lt.vitalijus.core.designsystem.components.layouts.ChirpSnackbarScaffold
 import lt.vitalijus.core.designsystem.components.textfields.ChirpPasswordTextField
 import lt.vitalijus.core.designsystem.components.textfields.ChirpTextField
 import lt.vitalijus.core.designsystem.theme.ChirpTheme
+import lt.vitalijus.core.presentation.util.ObserveAsEvents
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun RegisterRoot(
-    viewModel: RegisterViewModel = viewModel()
+    viewModel: RegisterViewModel = viewModel(),
+    onRegisterSuccess: (email: String) -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     val snackbarHostState = remember { SnackbarHostState() }
+
+    ObserveAsEvents(flow = viewModel.events) { event ->
+        when (event) {
+            is RegisterEvent.Success -> {
+                onRegisterSuccess(event.email)
+            }
+        }
+    }
 
     RegisterScreen(
         state = state,
