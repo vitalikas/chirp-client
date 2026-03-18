@@ -11,4 +11,7 @@
     <string name="register">Register</string>
     <string name="login">Log In</string>
     <string name="error_account_exists">An account with that email or username already exists</string>
+    <string name="error_invalid_password_format">Password must be at least 9 characters long, contain at least one digit and one uppercase letter</string>
+    <string name="error_invalid_email_format">This is not valid email format</string>
+    <string name="error_invalid_username_format">The username must be between 3 and 20 characters</string>
 </resources>
