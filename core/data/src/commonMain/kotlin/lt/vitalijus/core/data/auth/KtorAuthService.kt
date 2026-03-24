@@ -1,6 +1,7 @@
 package lt.vitalijus.core.data.auth
 
 import io.ktor.client.HttpClient
+import lt.vitalijus.core.data.dto.requests.EmailRequest
 import lt.vitalijus.core.data.dto.requests.RegisterRequest
 import lt.vitalijus.core.data.networking.post
 import lt.vitalijus.core.domain.auth.AuthService
@@ -23,6 +24,13 @@ class KtorAuthService(
                 email = email,
                 password = password
             )
+        )
+    }
+
+    override suspend fun resendVerificationEmail(email: String): EmptyResult<DataError.Remote> {
+        return httpClient.post(
+            route = "/auth/resend-verification",
+            body = EmailRequest(email = email)
         )
     }
 }
