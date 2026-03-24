@@ -1,5 +1,7 @@
 package lt.vitalijus.core.designsystem.components.brand
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -12,20 +14,20 @@ import org.jetbrains.compose.resources.vectorResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun ChirpSuccessIcon(
+fun ChirpFailureIcon(
     modifier: Modifier = Modifier
 ) {
     Icon(
-        imageVector = vectorResource(Res.drawable.success_checkmark),
+        imageVector = Icons.Default.Close,
         contentDescription = null,
-        tint = MaterialTheme.colorScheme.extended.success,
+        tint = MaterialTheme.colorScheme.error,
         modifier = modifier
     )
 }
 
 @Composable
 @Preview
-fun ChirpSuccessIconPreview(darkTheme: Boolean) {
+fun ChirpFailureIconPreview(darkTheme: Boolean) {
     ChirpTheme(
         darkTheme = darkTheme
     ) {
@@ -35,12 +37,12 @@ fun ChirpSuccessIconPreview(darkTheme: Boolean) {
 
 @Composable
 @Preview
-fun ChirpSuccessIconPreviewLight() {
+fun ChirpFailureIconPreviewLight() {
     ChirpSuccessIconPreview(darkTheme = false)
 }
 
 @Composable
 @Preview
-fun ChirpSuccessIconPreviewDark() {
+fun ChirpFailureIconPreviewDark() {
     ChirpSuccessIconPreview(darkTheme = true)
 }

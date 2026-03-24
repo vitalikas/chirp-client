@@ -1,6 +1,7 @@
 package lt.vitalijus.core.designsystem.components.layouts
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -13,7 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import lt.vitalijus.core.designsystem.components.brand.ChirpSuccessIcon
+import lt.vitalijus.core.designsystem.components.brand.ChirpFailureIcon
 import lt.vitalijus.core.designsystem.components.buttons.ChirpButton
 import lt.vitalijus.core.designsystem.components.buttons.ChirpButtonStyle
 import lt.vitalijus.core.designsystem.theme.ChirpTheme
@@ -21,10 +22,10 @@ import lt.vitalijus.core.designsystem.theme.extended
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun ChirpSimpleSuccessLayout(
+fun ChirpSimpleResultLayout(
     title: String,
     description: String,
-    icon: @Composable () -> Unit,
+    icon: @Composable ColumnScope.() -> Unit,
     primaryButton: @Composable () -> Unit,
     secondaryButton: @Composable (() -> Unit)? = null,
     secondaryError: String? = null,
@@ -83,11 +84,11 @@ fun ChirpSimpleSuccessLayoutPreview(darkTheme: Boolean) {
     ChirpTheme(
         darkTheme = darkTheme
     ) {
-        ChirpSimpleSuccessLayout(
+        ChirpSimpleResultLayout(
             title = "Title",
             description = "Description",
             icon = {
-                ChirpSuccessIcon()
+                ChirpFailureIcon()
             },
             primaryButton = {
                 ChirpButton(
