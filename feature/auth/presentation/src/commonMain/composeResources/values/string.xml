@@ -10,6 +10,7 @@
     <string name="password_hint">Use 9+ characters, at least one digit and one uppercase letter</string>
     <string name="register">Register</string>
     <string name="login">Log In</string>
+    <string name="close">Close</string>
     <string name="success_account_created">Chirp account successfully created!</string>
     <string name="error_account_exists">An account with that email or username already exists</string>
     <string name="error_invalid_password_format">Password must be at least 9 characters long, contain at least one digit and one uppercase letter</string>
@@ -18,4 +19,13 @@
     <string name="resend_verification_email">Resend verification email</string>
     <string name="verification_email_resend_success">Verification email successfully resent</string>
     <string name="verification_email_sent_to_x">We've sent a verification email to %1$s</string>
+    <string name="verifying_account">Verifying account...</string>
+    <string name="email_verified_successfully">Email verified successfully</string>
+    <string name="email_verified_successfully_desc">
+        Your email has been verified successfully. You can now log in to your account.
+    </string>
+    <string name="email_verified_failed">Email verification failed</string>
+    <string name="email_verified_failed_desc">
+        Unable to verify your email. Maybe the link is invalid or has expired.
+    </string>
 </resources>
