@@ -1,7 +1,7 @@
 package lt.vitalijus.chirp
 
 import androidx.compose.runtime.Composable
-import lt.vitalijus.auth.presentation.register.RegisterRoot
+import lt.vitalijus.chirp.navigation.NavigationRoot
 import lt.vitalijus.core.designsystem.theme.ChirpTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -9,10 +9,6 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Preview
 fun App() {
     ChirpTheme {
-        RegisterRoot(
-            onRegisterSuccess = { email ->
-                println("Email: $email")
-            }
-        )
+        NavigationRoot()
     }
 }
