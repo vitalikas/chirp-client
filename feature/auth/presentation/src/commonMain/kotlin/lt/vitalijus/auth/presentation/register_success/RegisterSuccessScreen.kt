@@ -13,7 +13,7 @@ import chirp.feature.auth.presentation.generated.resources.resend_verification_e
 import chirp.feature.auth.presentation.generated.resources.success_account_created
 import chirp.feature.auth.presentation.generated.resources.verification_email_resend_success
 import chirp.feature.auth.presentation.generated.resources.verification_email_sent_to_x
-import lt.vitalijus.core.designsystem.components.brand.ChirpFailureIcon
+import lt.vitalijus.core.designsystem.components.brand.ChirpSuccessIcon
 import lt.vitalijus.core.designsystem.components.buttons.ChirpButton
 import lt.vitalijus.core.designsystem.components.buttons.ChirpButtonStyle
 import lt.vitalijus.core.designsystem.components.layouts.ChirpAdaptiveResultLayout
@@ -69,7 +69,7 @@ fun RegisterSuccessScreen(
                     state.registeredEmail
                 ),
                 icon = {
-                    ChirpFailureIcon()
+                    ChirpSuccessIcon()
                 },
                 primaryButton = {
                     ChirpButton(
