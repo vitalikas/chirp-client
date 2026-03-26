@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
     <string name="welcome">Welcome to Chirp!</string>
+    <string name="welcome_back">Welcome back!</string>
     <string name="username">Username</string>
     <string name="username_placeholder">Chirp</string>
     <string name="username_hint">Use between 3 and 20 characters for your username</string>
@@ -8,6 +9,8 @@
     <string name="email_placeholder">hello@chirp.com</string>
     <string name="password">Password</string>
     <string name="password_hint">Use 9+ characters, at least one digit and one uppercase letter</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="create_account">Create account</string>
     <string name="register">Register</string>
     <string name="login">Log In</string>
     <string name="close">Close</string>
@@ -16,6 +19,7 @@
     <string name="error_invalid_password_format">Password must be at least 9 characters long, contain at least one digit and one uppercase letter</string>
     <string name="error_invalid_email_format">This is not valid email format</string>
     <string name="error_invalid_username_format">The username must be between 3 and 20 characters</string>
+    <string name="error_invalid_credentials">The email or password is incorrect</string>
     <string name="resend_verification_email">Resend verification email</string>
     <string name="verification_email_resend_success">Verification email successfully resent</string>
     <string name="verification_email_sent_to_x">We've sent a verification email to %1$s</string>
