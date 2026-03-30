@@ -29,6 +29,7 @@ import lt.vitalijus.core.designsystem.components.layouts.ChirpAdaptiveFormLayout
 import lt.vitalijus.core.designsystem.components.textfields.ChirpPasswordTextField
 import lt.vitalijus.core.designsystem.components.textfields.ChirpTextField
 import lt.vitalijus.core.designsystem.theme.ChirpTheme
+import lt.vitalijus.core.presentation.util.ObserveAsEvents
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
@@ -41,6 +42,13 @@ fun LoginRoot(
     onCreateAccountClick: () -> Unit
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+
+    ObserveAsEvents(viewModel.events) { event ->
+        when (event) {
+            LoginEvent.Success -> onLoginSuccess()
+            else -> Unit
+        }
+    }
 
     LoginScreen(
         state = state,
