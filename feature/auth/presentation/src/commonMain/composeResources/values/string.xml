@@ -20,6 +20,7 @@
     <string name="error_invalid_email_format">This is not valid email format</string>
     <string name="error_invalid_username_format">The username must be between 3 and 20 characters</string>
     <string name="error_invalid_credentials">The email or password is incorrect</string>
+    <string name="error_email_not_verified">Unable to log in. Your email isn't verified</string>
     <string name="resend_verification_email">Resend verification email</string>
     <string name="verification_email_resend_success">Verification email successfully resent</string>
     <string name="verification_email_sent_to_x">We've sent a verification email to %1$s</string>
